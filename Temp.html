@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Temperature Converter</title>
+    <link rel="stylesheet" href="style1.css">
+
+</head>
+<body>
+<form onsubmit="return false">
+    <div class="Heading">
+        Temperature Converter Celsius and Fahrenheit
+    </div>
+    <div class="Temperature Input">
+        <p class="sub-heading">
+            Select the Conversion
+        </p>
+        <label>
+            <input class="Selection-Celsius" type="radio" id="select-conversion1"
+                   value="selected_c" name="select">
+            CELSIUS<br>
+            <input class="Selection-Fahrenheit" type="radio" id="select-conversion2"
+                   value="selected_f" name="select">
+            FAHRENHEIT<br>
+            <br>
+        </label>
+        <div class="Celsius-Check" id="checking"></div>
+        <br>
+        <label>
+            <input class="User Input" type="text" id="temps"><br><br>
+        </label>
+    </div>
+    <div class="Celsius Button">
+        <button class="C-Button" type="submit" onclick="Convert()">CONVERT</button>
+        <button class="Clear" type="reset"   id="clearing" onclick="Clear()">CLEAR</button>
+    </div>
+    <div class="Display_Conversion">
+        <p class="Display-Message">
+            Temperature Conversion:
+        </p>
+        <div class="Answer-Display" id="answer"></div>
+    </div>
+    <br>
+
+</form>
+<script>
+    function Convert() {
+        if (document.getElementById("select-conversion1").checked === true) {
+            let temp_c = parseInt(document.getElementById("temps").value);
+            let c_convert = ((temp_c * 9 / 5) + 32);
+            document.getElementById("answer").innerHTML = temp_c + "  degrees Celsius Converts to "
+                + c_convert.toString() + " degrees Fahrenheit";
+        } else if (document.getElementById("select-conversion2").checked === true) {
+            let temp_f = parseInt(document.getElementById("temps").value);
+            let f_convert = ((temp_f - 32) * 5) / 9;
+            f_convert = f_convert.toFixed(2)
+            document.getElementById("answer").innerHTML = temp_f + " degrees Fahrenheit Converts to "
+                + f_convert.toString() + " degrees Celsius"
+        }
+
+    }
+
+    function Clear() {
+        document.getElementById("answer").innerHTML = "";
+    }
+</script>
+</body>
+</html>
